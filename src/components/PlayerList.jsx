@@ -1,19 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const PlayerList = ({ teamName, players, removePlayer, movePlayer, canMove }) => {
+const PlayerList = ({ players, team }) => {
   return (
-    <div>
-      <h2>{teamName}</h2>
-      <ul>
-        {players.map((player, index) => (
-          <li key={index}>
-            {player}
-            <button onClick={() => removePlayer(player)}>Ta bort</button>
-            {canMove && <button onClick={() => movePlayer(player)}>Flytta</button>}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {players.map((player) => (
+        <li key={player.username}>
+          <Link to={`/playerinfo/${player.username}`}>
+            {player.username}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 
